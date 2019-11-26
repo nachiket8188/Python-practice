@@ -1,8 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '6c681ab3e061cadc5ebbad267f4b8f37'
+from flask import render_template, url_for, flash, redirect
+from flaskapp.forms import RegistrationForm, LoginForm
+from flaskapp.models import User, Post
+from flaskapp import app
 
 posts = [
     {
@@ -50,7 +49,3 @@ def login():
 @app.route("/about")  # route() is a decorator | '/' is the root of our application
 def about():
     return render_template('about.html', title="About")
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
